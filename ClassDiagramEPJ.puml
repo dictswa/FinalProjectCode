@@ -2,16 +2,14 @@
 
 class Patient{
 CPR: integer
-navn: string
-fødselsdag: DATE
-alder: integer
-Telefon: integer
-Email: string
-Adresse: string
-Diagnoser: string
-registrer()
-opdaterInfo()
-addDiagnose()
+name: string
+birthdate: DATE
+age: integer
+phone: integer
+email: string
+adress: string
+register()
+updateInfo()
 }
 
 class Database{
