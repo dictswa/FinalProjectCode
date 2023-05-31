@@ -1,0 +1,63 @@
+@startuml
+left to right direction
+:Doctor: as a1
+:Patient: as a2
+:Secretary: as a3
+
+rectangle EHR-system {
+(Register patient) as (UC1)
+a3->(UC1)
+
+(View patientinformation) as (UC2)
+a1-->(UC2)
+a2-->(UC2)
+
+(UC1).up.>(UC2) : <<extend>>
+(UC2)-[hidden]>(UC1)
+
+(Reference patients) as (UC3)
+a1-->(UC3)
+
+(Write prescriptions)as (UC4)
+a1-->UC4
+
+(Renew prescriptions) as UC5
+a3-u->UC5
+
+(UC4)..>UC5 : <<extend>>
+
+(View labresults) as (UC6)
+a1-->(UC6)
+a2-->(UC6)
+a3-u->(UC6)
+
+(View references) as (UC7)
+a2-->(UC7)
+a3-u->(UC7)
+
+(UC3).down.>(UC7) : <<extend>>
+
+(View notes) as UC8
+a3-u->UC8
+
+(Write notes) as (UC9)
+a1-->(UC9)
+a2-->(UC9)
+
+(UC9)..>UC8 : <<extend>>
+
+(Set up consultations) as (UC10)
+a3-u->(UC10)
+
+(View consultations) as (UC11)
+a1-->(UC11)
+a2-->(UC11)
+
+(UC10).u.>(UC11) : <<extend>>
+
+(Receive notifications) as UC12
+a2-->UC12
+
+}
+
+@enduml
